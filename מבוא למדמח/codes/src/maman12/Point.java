@@ -1,5 +1,10 @@
 package maman12;
 
+/**
+* Creates new Point by (x,y)
+* @author Amit Y
+
+*/
 public class Point {
 
     private int _x;
