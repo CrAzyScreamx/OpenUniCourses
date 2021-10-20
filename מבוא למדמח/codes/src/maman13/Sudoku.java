@@ -1,5 +1,10 @@
 package maman13;
 
+/**
+ * Constructs a sudoku 9x9 board
+ * @author Amit Y
+ * @version 20/10/2021
+ */
 public class Sudoku {
 
     private Square3x3[][] _sudoku = new Square3x3[3][3];
