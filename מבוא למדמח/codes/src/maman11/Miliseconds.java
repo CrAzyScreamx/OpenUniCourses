@@ -10,7 +10,7 @@ public class Miliseconds {
         Scanner scan = new Scanner(System.in);
         System.out.println("This program reads integer as miliseconds and will convert it to days, hours, minutes and" +
                 "seconds");
-        System.out.print("Please enter number of maman11.Miliseconds: ");
+        System.out.print("Please enter number of Miliseconds: ");
         long ms = scan.nextLong();
 
         seconds = ms/1000;

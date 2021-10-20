@@ -1,127 +1,132 @@
 package maman12;
 
+/**
+ * Creates a point
+ * @author Amit Y
+ * @version 20/10/2021
+ */
 public class Point {
 
     private int _x;
     private int _y;
 
-    /*
-    * Constructs a new Point using x,y coordinates
-    * @param x - x coordinate of a point
-    * @param y - y coordinate of a point
+    /**
+     * Constructs a point using x,y coordinates
+     * @param x x coordinate
+     * @param y y coordinate
      */
     public Point(int x, int y) {
         _x = x;
         _y = y;
     }
 
-    /*
-    * Constructs a new Point by copying x,y coordinates of another point
-    * @param other - another point which the code copies x,y coordinates from
-    */
+    /**
+     * Constructs a point using another Point
+     * @param other another Point
+     */
     public Point(Point other) {
         _x = other.getX();
         _y = other.getY();
     }
 
-    /*
-    * Getting the x coordinate of the point
-    * @return - the x coordinate of Point
-    */
+    /**
+     * Returns the x coordinate of this Point
+     * @return x coordinate
+     */
     public int getX() {
         return _x;
     }
 
-    /*
-    * Getting the y coordinate of the point
-    * @return - the y coordinate of Point
-    */
+    /**
+     * Returns the y coordinate of this Point
+     * @return y coordinate
+     */
     public int getY() {
         return _y;
     }
 
-    /*
-    * Setting the x coordinate to another number
-    * @param num - the new x coordinate of Point
-    */
+    /**
+     * Sets the x coordinate to a new coordinate
+     * @param num new x coordinate
+     */
     public void setX(int num) {
         _x = num;
     }
 
-    /*
-     * Setting the y coordinate to another number
-     * @param num - the new y coordinate of Point
+    /**
+     * Sets the y coordinate to a new coordinate
+     * @param num new y coordinate
      */
     public void setY(int num) {
         _y = num;
     }
 
-    /*
-    * Overriding toString method, getting the sentence of the coordinate (x,y)
-    * @return - sentence of (x,y) Point
-    */
+    /**
+     * Returns the coordinate as (x,y) format
+     * @return x,y coordinates as (x,y) format
+     */
     public String toString() { return "(" + _x + "," + _y + ")"; }
 
-    /*
-    * Checks if one Point equals to another
-    * @param other - Another Point
-    * @return - if the Points are equal or not
-    */
+    /**
+     * Checks if this point equals another point
+     * @param other Another Point
+     * @return if this point equals other point
+     */
     public boolean equals(Point other) {
         return _x == other.getX() && _y == other.getY();
     }
 
-    /*
-    * Checks if this Point is above Point other
-    * @param other - Another Point
-    * @return - if this Point is above other Point
-    */
+    /**
+     * Checks if this point is above another point
+     * @param other Another Point
+     * @return if this Point above other Point
+     */
     public boolean isAbove(Point other) {
         return _y > other.getY();
     }
 
-    /*
-    * Checks if this Point is Under Point other
-    * @param other - another Point
-    * @return - If this Point is under other Point
-    */
+    /**
+     * Checks if this point is under another point
+     * @param other Another Point
+     * @return if this Point under other Point
+     */
     public boolean isUnder(Point other) {
         return !isAbove(other);
     }
 
-    /*
-    * Checks if this Point positioned left of Point other
-    * @param other - Another Point
-    * @return - if this Point is positioned left of Point other
-    */
+    /**
+     * Checks if this point is left from another point
+     * @param other Another Point
+     * @return if this Point is left from other Point
+     */
     public boolean isLeft(Point other) {
         return _x < other.getX();
     }
 
-    /*
-    * Checks if this Point positioned right of Point other
-    * @param other - Another Point
-    * @return - if this Point is positioned right of Point other
-    */
+    /**
+     * Checks if this point is right from another point
+     * @param other Another Point
+     * @return if this Point is right from other Point
+     */
     public boolean isRight(Point other) {
         return !isLeft(other);
     }
 
-    /*
-    * Moves Point by x,y coordinates
-    * @param deltaX - move the x coordinate by deltaX
-    * @param deltaY - move the y coordinate by deltaY
-    */
+    /**
+     * Moves this point to another x,y coordinates
+     * @param deltaX new x coordinate
+     * @param deltaY new y coordinate
+     */
     public void move(int deltaX, int deltaY) {
         _x += deltaX;
         _y += deltaY;
     }
 
-    /*
-    * Calculates the distance between two Point
-    * @param p - Another Point
-    * @return - the distance between two Points
-    */
+    /**
+     * Checks distance between two points
+     * @param p Another Point
+     * @return distance between this Point and p Point
+     */
     public double distance(Point p) {
         return Math.sqrt(Math.pow(_x - p.getX(), 2) + Math.pow(_y - p.getY(), 2));
     }

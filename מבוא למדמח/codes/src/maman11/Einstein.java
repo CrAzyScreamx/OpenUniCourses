@@ -8,7 +8,7 @@ public class Einstein {
         long difference, reversedDifference;
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to the maman11.Einstein magic game");
+        System.out.println("Welcome to the Einstein magic game");
         System.out.print("Please enter a 3 digit positive number whose first and last digits are different: ");
         long number = scan.nextLong();
         if (number < 100 || number > 999) System.out.println("The number you entered is not a 3 digit positive number");
