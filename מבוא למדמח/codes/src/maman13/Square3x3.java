@@ -134,7 +134,7 @@ public class Square3x3 {
      * Gets column number and boolean with 10 indexes, for each 1-9 cell values in the specific column it'll set the
      * value at the index ( cell values ) to true ( ex. 1,3,5 will set in the values array
      * values[1],values[5],values[3]=true )
-     * @param col row between 0-2
+     * @param col column between 0-2
      * @param values a boolean array
      */
     public void whosThereCol(int col, boolean[] values) {
