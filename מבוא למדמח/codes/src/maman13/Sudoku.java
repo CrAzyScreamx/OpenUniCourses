@@ -18,7 +18,11 @@ public class Sudoku {
     }
 
     public Sudoku(Square3x3[][] square3x3Array) {
-        _sudoku = square3x3Array;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                _sudoku[row][col] = new Square3x3(square3x3Array[row][col]);
+            }
+        }
     }
 
     public boolean isValid() {

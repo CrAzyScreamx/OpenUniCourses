@@ -27,7 +27,7 @@ public class RectangleB {
      * @param h height
      */
     public RectangleB(Point p, int w, int h) {
-        _pointSW = p;
+        _pointSW = new Point(p);
         _pointNE = new Point(p.getX() + w, p.getY() + h);
     }
 
@@ -37,8 +37,8 @@ public class RectangleB {
      * @param ne north-east point
      */
     public RectangleB(Point sw, Point ne) {
-        _pointSW = sw;
-        _pointNE = ne;
+        _pointSW = new Point(sw);
+        _pointNE = new Point(ne);
     }
 
     /**
@@ -46,8 +46,8 @@ public class RectangleB {
      * @param r Another Rectangle
      */
     public RectangleB(RectangleB r) {
-        _pointSW = r.getPointSW();
-        _pointNE = r.getPointNE();
+        _pointSW = new Point(r.getPointSW());
+        _pointNE = new Point(r.getPointNE());
     }
 
     /**
@@ -71,7 +71,7 @@ public class RectangleB {
      * @return south-west point
      */
     public Point getPointSW() {
-        return _pointSW;
+        return new Point(_pointSW);
     }
 
     /**
@@ -170,7 +170,7 @@ public class RectangleB {
      * @return north-east point as Point class
      */
     public Point getPointNE() {
-        return _pointNE;
+        return new Point(_pointNE);
     }
 
     /**

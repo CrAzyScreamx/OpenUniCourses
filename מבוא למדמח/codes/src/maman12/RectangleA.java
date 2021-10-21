@@ -31,7 +31,7 @@ public class RectangleA {
      * @param h height
      */
     public RectangleA(Point p, int w, int h) {
-        _pointSW = p;
+        _pointSW = new Point(p);
         if (w <= 0) _width = 1;
         else _width = w;
         if (h <= 0) _height = 1;
@@ -80,7 +80,7 @@ public class RectangleA {
      * @return south-west point
      */
     public Point getPointSW() {
-        return _pointSW;
+        return new Point(_pointSW);
     }
 
     /**

@@ -34,23 +34,12 @@ public class Square3x3 {
      * @param other another Square3x3 array
      */
     public Square3x3(Square3x3 other) {
-        _square3x3 = other.getSquare3x3();
-    }
-
-    /**
-     * Returns the two-dimensional array of Square3x3
-     * @return square3x3 array
-     */
-    public int[][] getSquare3x3() {
-        return _square3x3;
-    }
-
-    /**
-     * Sets the two-dimensional array
-     * @param other another Square3x3
-     */
-    public void setSquare3x3(Square3x3 other) {
-        _square3x3 = other.getSquare3x3();
+        _square3x3 = new int[3][3];
+        for (int row = 0; row < _square3x3.length; row++) {
+            for (int col = 0; col < _square3x3[row].length; col++) {
+                _square3x3[row][col] = other.getCell(row, col);
+            }
+        }
     }
 
     /**
