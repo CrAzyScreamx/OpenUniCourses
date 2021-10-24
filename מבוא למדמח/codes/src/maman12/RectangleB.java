@@ -101,7 +101,8 @@ public class RectangleB {
      * @param p new point from Point class
      */
     public void setPointSW(Point p) {
-        _pointSW = p;
+        _pointNE = new Point(p.getX() + getWidth(), p.getY() + getHeight());
+        _pointSW = new Point(p);
     }
 
     /**
@@ -110,7 +111,7 @@ public class RectangleB {
      */
     public String toString() {
 
-        return "Width=" + getWidth() + " Height=" + getHeight();
+        return "Width=" + getWidth() + " Height=" + getHeight() + " PointSW=" + getPointSW();
     }
 
     /**
@@ -179,7 +180,7 @@ public class RectangleB {
     public void changeSides() {
         int w = getWidth();
         int h = getHeight();
-        _pointNE = new Point(_pointSW.getY() + h, _pointSW.getX() + w);
+        _pointNE = new Point(_pointSW.getX() + h, _pointSW.getY() + w);
     }
 
     /**
@@ -187,9 +188,9 @@ public class RectangleB {
      * @param r Another Rectangle
      * @return if this RectangleA is in r RectangleA
      */
-    public boolean isIn(RectangleB r) {
-        return _pointSW.isRight(r.getPointSW()) && _pointSW.isAbove(r.getPointSW()) &&
-                getPointNE().isLeft(r.getPointNE()) && getPointNE().isUnder(r.getPointNE());
+    public boolean isIn(RectangleB r){
+        return !(_pointSW.isLeft(r.getPointSW()) || _pointSW.isUnder(r.getPointSW()) ||
+                this.getPointNE().isRight(r.getPointNE()) || this.getPointNE().isAbove(r.getPointNE()));
     }
 
     /**

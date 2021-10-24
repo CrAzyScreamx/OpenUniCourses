@@ -111,8 +111,8 @@ public class RectangleA {
      * Gets the information of the Rectangle
      * @return information as "Width=w Height=h" format
      */
-    public String ToString() {
-        return "Width=" + _width + " Height=" + _height + " PointSW=" + _pointSW;
+    public String toString() {
+        return ("Width=" + _width + " Height=" + _height + " PointSW=" + _pointSW);
     }
 
     /**
@@ -188,9 +188,9 @@ public class RectangleA {
      * @param r Another Rectangle
      * @return if this RectangleA is in r RectangleA
      */
-    public boolean isIn(RectangleA r) {
-        return _pointSW.isRight(r.getPointSW()) && _pointSW.isAbove(r.getPointSW()) &&
-                getPointNE().isLeft(r.getPointNE()) && getPointNE().isUnder(r.getPointNE());
+    public boolean isIn(RectangleA r){
+        return !(_pointSW.isLeft(r.getPointSW()) || _pointSW.isUnder(r.getPointSW()) ||
+                this.getPointNE().isRight(r.getPointNE()) || this.getPointNE().isAbove(r.getPointNE()));
     }
 
     /**
