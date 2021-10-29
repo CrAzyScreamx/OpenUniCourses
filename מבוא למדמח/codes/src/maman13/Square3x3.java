@@ -18,13 +18,13 @@ public class Square3x3 {
 
     /**
      * Constructs a two-dimensional array with values from another array and rest of unfilled values is -1
-     * @param Array another array of x dimensions
+     * @param array another array of x dimensions
      */
-    public Square3x3(int[][] Array) {
+    public Square3x3(int[][] array) {
         fillArrayValues(_square3x3);
-        for (int i = 0; i < Math.min(3, Array.length); i++) {
-            for (int j = 0; j < Math.min(3, Array[i].length); j++) {
-                _square3x3[i][j] = Array[i][j];
+        for (int i = 0; i < Math.min(_square3x3.length, array.length); i++) {
+            for (int j = 0; j < Math.min(_square3x3[i].length, array[i].length); j++) {
+                _square3x3[i][j] = array[i][j];
             }
         }
     }
@@ -49,7 +49,7 @@ public class Square3x3 {
      * @return value at row and column
      */
     public int getCell(int row, int col) {
-        if (row < 3 && row >= 0 && col < 3 && col >= 0) {
+        if (row < _square3x3.length && row >= 0 && col < _square3x3[row].length && col >= 0) {
             return _square3x3[row][col];
         } else {
             return -1;
@@ -63,7 +63,7 @@ public class Square3x3 {
      * @param value value to set at row,column index
      */
     public void setXY(int row, int col, int value) {
-        if (row < 3 && row >= 0 && col < 3 && col >= 0) {
+        if (row < _square3x3.length && row >= 0 && col < _square3x3[row].length && col >= 0) {
             _square3x3[row][col] = value;
         }
     }
@@ -92,6 +92,7 @@ public class Square3x3 {
      */
     public boolean allThere() {
         boolean[] values = new boolean[10];
+        // Uses whosThereRow method to check numbers in each row specifically
         for (int row = 0; row < _square3x3.length; row++) {
             whosThereRow(row, values);
         }
@@ -138,10 +139,10 @@ public class Square3x3 {
     /**
      * Fills the array with -1 values ( resetting the array )
      */
-    private void fillArrayValues(int[][] Array) {
-        for (int i = 0; i < Array.length; i++) {
-            for (int j = 0; j < Array[i].length; j++) {
-                Array[i][j] = -1;
+    private void fillArrayValues(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = -1;
             }
         }
     }

@@ -12,9 +12,9 @@ public class RectangleA {
     private Point _pointSW;
 
     /**
-     * Constructs a RectangleA using width and height
-     * @param w width of the Rectangle
-     * @param h height of the Rectangle
+     * First constructor for objects of class RectangleA Constructs a new rectangle with the specified width, height and it's south west corner is (0,0)
+     * @param w The rectangle width
+     * @param h The rectangle height
      */
     public RectangleA(int w, int h) {
         _pointSW = new Point(0, 0);
@@ -25,10 +25,11 @@ public class RectangleA {
     }
 
     /**
-     * Constructs a RectangleA using point, width and height
-     * @param p point from class Point
-     * @param w width
-     * @param h height
+     * Second constructor for objects of class RectangleA Construct a new rectangle with the specified width, height and south west vertex
+     * @param p south western vertex
+     * @param w rectangle width
+     * @param h rectangle height
+     * @see Point
      */
     public RectangleA(Point p, int w, int h) {
         _pointSW = new Point(p);
@@ -39,19 +40,19 @@ public class RectangleA {
     }
 
     /**
-     * Constructs a RectangleA using south-west and north-east points
-     * @param sw point from class Point
-     * @param ne point from class Point
+     * Third constructor for objects of class RectangleA Construct a new rectangle with the specified south west vertex and north east vertex
+     * @param sw south western vertex
+     * @param ne north eastern vertex
      */
     public RectangleA(Point sw, Point ne) {
         _height = ne.getY() - sw.getY();
         _width = ne.getX() - sw.getX();
-        _pointSW = sw;
+        _pointSW = new Point(sw);
     }
 
     /**
-     * Constructs a RectangleA using another Rectangle from RectangleA class
-     * @param r rectangle from RectangleA class
+     * Copy constructor for objects of class RectangleA Constructs a rectangle using another rectangle
+     * @param r The rectangle from which to construct the new object
      */
     public RectangleA(RectangleA r) {
         _width = r.getWidth();
@@ -60,122 +61,122 @@ public class RectangleA {
     }
 
     /**
-     * Gets the width of the Rectangle
-     * @return width
+     * Returns the width of the rectangle
+     * @return the width of the rectangle
      */
     public int getWidth() {
         return _width;
     }
 
     /**
-     * Gets the height of the Rectangle
-     * @return height
+     * Returns the height of the rectangle
+     * @return the height of the rectangle
      */
     public int getHeight() {
         return _height;
     }
 
     /**
-     * Gets the South-West point of the Rectangle
-     * @return south-west point
+     * Returns the South-West point of the rectangle
+     * @return a copy of the s-w point of the rectangle
      */
     public Point getPointSW() {
         return new Point(_pointSW);
     }
 
     /**
-     * Sets the width of the Rectangle
-     * @param w new width
+     * Sets the width of the rectangle
+     * @param w the width of the rectangle to set to
      */
     public void setWidth(int w) {
         if (w > 0) _width = w;
     }
 
     /**
-     * Sets the height of the Rectangle
-     * @param h new height
+     * Sets the height of the rectangle
+     * @param h the height of the rectangle to set to
      */
     public void setHeight(int h) {
         if (h > 0) _height = h;
     }
 
     /**
-     * Sets a new South-West point for the Rectangle
-     * @param p new point from Point class
+     * Sets the South-West point of the rectangle
+     * @param p the S-W point of the rectangle to set to
      */
     public void setPointSW(Point p) {
-        _pointSW = p;
+        _pointSW = new Point(p);
     }
 
     /**
-     * Gets the information of the Rectangle
-     * @return information as "Width=w Height=h" format
+     * Returns a string representation of the rectangle
+     * @return a string represent the rectangle For example: Width=4 Height=6 PointSW=(1,2)
      */
     public String toString() {
         return ("Width=" + _width + " Height=" + _height + " PointSW=" + _pointSW);
     }
 
     /**
-     * Gets the Perimeter of the Rectangle
-     * @return Perimeter of Rectangle
+     * Calculates the perimeter of the rectangle
+     * @return The perimeter of the rectangle.
      */
     public int getPerimeter() {
         return 2* (_width + _height);
     }
 
     /**
-     * Gets the Area of the Rectangle
-     * @return Area of Rectangle
+     * Calculates the area of the rectangle
+     * @return The area of the rectangle.
      */
     public int getArea() {
         return _width * _height;
     }
 
     /**
-     * Moves the Rectangle to another place
-     * @param deltaX new x coordinate
-     * @param deltaY new y coordinate
+     * Move the rectangle by deltaX in x direction and deltaY in y direction
+     * @param deltaX translate the rectangle deltaX in the x direction.
+     * @param deltaY translate the rectangle deltaY in the y direction.
      */
     public void move(int deltaX, int deltaY) {
         _pointSW.move(deltaX, deltaY);
     }
 
     /**
-     * Checks if this Rectangle equals another Rectangle
-     * @param other Rectangle of RectangleA class
-     * @return if this Rectangle equals other Rectangle
+     * Returns true iff the given rectangle is equal to this rectangle
+     * @param other the rectangle to check equality with
+     * @return true iff other and this rectangle are equal
      */
     public boolean equals(RectangleA other) {
         return _width == other.getWidth() && _height == other.getHeight() && _pointSW.equals(other.getPointSW());
     }
 
     /**
-     * Gets the diagonal length of the Rectangle
-     * @return Diagonal length
+     * Returns the length of the rectangle diagonal
+     * @return the length of the diagonal of the Rectangle
      */
     public double getDiagonalLength() {
         return _pointSW.distance(getPointNE());
     }
 
     /**
-     * Checks if this Rectangle is Larger than another Rectangle
-     * @param other Rectangle of RectangleA class
-     * @return if this RectangleA is larger than other RectangleA
+     * Returns true if the current rectangle is larger than the parameter rectangle
+     * @param other another Rectangle to compare with
+     * @return true - if the current Rectangle's area is larger than the other Rectangle which recieved as parameter, false - otherwise
      */
     public boolean isLarger(RectangleA other) {
         return this.getArea() > other.getArea();
     }
 
     /**
-     * Gets the North-East Point of the Rectangle
-     * @return north-east point as Point class
+     * Returns the North-East point of the rectangle
+     * @return a copy of the North-East point of the Rectangle
      */
     public Point getPointNE() {
         return new Point(_pointSW.getX() + _width, _pointSW.getY() + _height);
     }
 
     /**
-     * Switches between the width and height of the Rectangle
+     * Changes the width to height and vice versa
      */
     public void changeSides() {
         int tempWidth = _width;
@@ -184,9 +185,9 @@ public class RectangleA {
     }
 
     /**
-     * Checks if this Rectangle is in another Rectangle
-     * @param r Another Rectangle
-     * @return if this RectangleA is in r RectangleA
+     * Returns true if the current rectangle is in the parameter rectangle
+     * @param r another Rectangle to check with
+     * @return true - if the current Rectangle's completly in the other Rectangle which recieved as parameter, false - otherwise
      */
     public boolean isIn(RectangleA r){
         return !(_pointSW.isLeft(r.getPointSW()) || _pointSW.isUnder(r.getPointSW()) ||
@@ -194,9 +195,9 @@ public class RectangleA {
     }
 
     /**
-     * Checks if this Rectangle overlaps another Rectangle
-     * @param r Another Rectangle
-     * @return if this RectangleA overlaps r RectangleA
+     * Returns true if the current rectangle overlaps with the parameter rectangle
+     * @param r another Rectangle to check with
+     * @return true - if the current Rectangle's overlaps with the other Rectangle which recieved as parameter even by a single point, false - otherwise
      */
     public boolean overlap(RectangleA r) {
         Point rPointSW = r.getPointSW();

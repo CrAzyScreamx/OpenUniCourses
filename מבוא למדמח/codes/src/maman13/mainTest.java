@@ -1,11 +1,14 @@
 package maman13;
 
+import maman12.Point;
+import maman12.RectangleB;
+
 import java.util.Random;
 
 public class mainTest {
 
     public static void main(String[] args) {
-        int[][] array = new int[3][3];
+        /*int[][] array = new int[3][3];
         Square3x3[][] squareArray = new Square3x3[3][3];
         Random rnd = new Random();
         for (int sqar = 0; sqar < 3; sqar++) {
@@ -20,6 +23,12 @@ public class mainTest {
             }
         }
         Sudoku sudoku = new Sudoku(squareArray);
-        System.out.println(sudoku.isValid());
+        System.out.println(sudoku.isValid());*/
+        Point p1 = new Point(5, 5);
+        Point p2 = new Point(1, 1);
+        RectangleB r11 = new RectangleB(10, 8);
+        RectangleB r12 = new RectangleB(p1, p2);
+        System.out.println(r11.overlap(r12));
+        System.out.println(r12.overlap(r11));
     }
 }

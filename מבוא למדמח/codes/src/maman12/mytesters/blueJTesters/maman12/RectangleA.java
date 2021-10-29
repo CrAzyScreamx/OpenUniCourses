@@ -1,75 +1,80 @@
-package maman12;
-
 /**
  * Creates a new Rectangle
  * @author Amit Y
  * @version 20/10/2021
  */
-public class RectangleB {
+public class RectangleA {
 
+    private int _width;
+    private int _height;
     private Point _pointSW;
-    private Point _pointNE;
 
     /**
-     * First constructor for objects of class RectangleB Constructs a new rectangle with the specified width, height and it's south west corner is (0,0)
-     * @param w The rectangle width
-     * @param h The rectangle height
+     * Constructs a RectangleA using width and height
+     * @param w width of the Rectangle
+     * @param h height of the Rectangle
      */
-    public RectangleB(int w, int h) {
-        _pointSW = new Point(0,0);
-        _pointNE = new Point(w, h);
+    public RectangleA(int w, int h) {
+        _pointSW = new Point(0, 0);
+        if (w <= 0) _width = 1;
+        else _width = w;
+        if (h <= 0) _height = 1;
+        else _height = h;
     }
 
     /**
-     * Second constructor for objects of class RectangleB Constructs a new rectangle with the specified vertices
-     * @param p south western vertex
-     * @param w rectangle width
-     * @param h rectangle height
-     * @see Point
+     * Constructs a RectangleA using point, width and height
+     * @param p point from class Point
+     * @param w width
+     * @param h height
      */
-    public RectangleB(Point p, int w, int h) {
+    public RectangleA(Point p, int w, int h) {
         _pointSW = new Point(p);
-        _pointNE = new Point(p.getX() + w, p.getY() + h);
+        if (w <= 0) _width = 1;
+        else _width = w;
+        if (h <= 0) _height = 1;
+        else _height = h;
     }
 
     /**
-     * Third constructor for objects of class RectangleB Constructs a new rectangle with the specified vertices
-     * @param sw south western vertex
-     * @param ne north eastern vertex
-     * @see Point
+     * Constructs a RectangleA using south-west and north-east points
+     * @param sw point from class Point
+     * @param ne point from class Point
      */
-    public RectangleB(Point sw, Point ne) {
+    public RectangleA(Point sw, Point ne) {
+        _height = ne.getY() - sw.getY();
+        _width = ne.getX() - sw.getX();
         _pointSW = new Point(sw);
-        _pointNE = new Point(ne);
     }
 
     /**
-     * Copy constructor for objects of class RectangleB Constructs a rectangle using another rectangle
-     * @param r The rectangle from which to construct the new object
+     * Constructs a RectangleA using another Rectangle from RectangleA class
+     * @param r rectangle from RectangleA class
      */
-    public RectangleB(RectangleB r) {
-        _pointSW = new Point(r.getPointSW());
-        _pointNE = new Point(r.getPointNE());
+    public RectangleA(RectangleA r) {
+        _width = r.getWidth();
+        _height = r.getHeight();
+        _pointSW = r.getPointSW();
     }
 
     /**
-     * Returns the South-West point of the rectangle
-     * @return a copy of the s-w point of the rectangle
+     * Gets the width of the Rectangle
+     * @return width
      */
     public int getWidth() {
-        return _pointNE.getX() - _pointSW.getX();
+        return _width;
     }
 
     /**
-     * Returns the height of the Rectangle
+     * Gets the height of the Rectangle
      * @return height
      */
     public int getHeight() {
-        return _pointNE.getY() - _pointSW.getY();
+        return _height;
     }
 
     /**
-     * Returns the South-West point of the Rectangle
+     * Gets the South-West point of the Rectangle
      * @return south-west point
      */
     public Point getPointSW() {
@@ -81,10 +86,7 @@ public class RectangleB {
      * @param w new width
      */
     public void setWidth(int w) {
-        if (w > 0) {
-            int yPointNE = _pointNE.getY();
-            _pointNE = new Point(_pointSW.getX() + w, yPointNE);
-        }
+        if (w > 0) _width = w;
     }
 
     /**
@@ -92,10 +94,7 @@ public class RectangleB {
      * @param h new height
      */
     public void setHeight(int h) {
-        if (h > 0) {
-            int xPointNE = _pointNE.getX();
-            _pointNE = new Point(xPointNE, _pointSW.getY() + h);
-        }
+        if (h > 0) _height = h;
     }
 
     /**
@@ -103,33 +102,31 @@ public class RectangleB {
      * @param p new point from Point class
      */
     public void setPointSW(Point p) {
-        _pointNE = new Point(p.getX() + getWidth(), p.getY() + getHeight());
         _pointSW = new Point(p);
     }
 
     /**
-     * Returns the information of the Rectangle
+     * Gets the information of the Rectangle
      * @return information as "Width=w Height=h" format
      */
     public String toString() {
-
-        return "Width=" + getWidth() + " Height=" + getHeight() + " PointSW=" + getPointSW();
+        return ("Width=" + _width + " Height=" + _height + " PointSW=" + _pointSW);
     }
 
     /**
-     * Returns the Perimeter of the Rectangle
+     * Gets the Perimeter of the Rectangle
      * @return Perimeter of Rectangle
      */
     public int getPerimeter() {
-        return 2*(getWidth() + getHeight());
+        return 2* (_width + _height);
     }
 
     /**
-     * Returns the Area of the Rectangle
+     * Gets the Area of the Rectangle
      * @return Area of Rectangle
      */
     public int getArea() {
-        return getWidth() * getHeight();
+        return _width * _height;
     }
 
     /**
@@ -139,7 +136,6 @@ public class RectangleB {
      */
     public void move(int deltaX, int deltaY) {
         _pointSW.move(deltaX, deltaY);
-        _pointNE.move(deltaX, deltaY);
     }
 
     /**
@@ -147,12 +143,12 @@ public class RectangleB {
      * @param other Rectangle of RectangleA class
      * @return if this Rectangle equals other Rectangle
      */
-    public boolean equals(RectangleB other) {
-        return _pointSW.equals(other.getPointSW()) && _pointNE.equals(other.getPointNE());
+    public boolean equals(RectangleA other) {
+        return _width == other.getWidth() && _height == other.getHeight() && _pointSW.equals(other.getPointSW());
     }
 
     /**
-     * Returns the diagonal length of the Rectangle
+     * Gets the diagonal length of the Rectangle
      * @return Diagonal length
      */
     public double getDiagonalLength() {
@@ -164,25 +160,25 @@ public class RectangleB {
      * @param other Rectangle of RectangleA class
      * @return if this RectangleA is larger than other RectangleA
      */
-    public boolean isLarger(RectangleB other) {
+    public boolean isLarger(RectangleA other) {
         return this.getArea() > other.getArea();
     }
 
     /**
-     * Returns the North-East Point of the Rectangle
+     * Gets the North-East Point of the Rectangle
      * @return north-east point as Point class
      */
     public Point getPointNE() {
-        return new Point(_pointNE);
+        return new Point(_pointSW.getX() + _width, _pointSW.getY() + _height);
     }
 
     /**
      * Switches between the width and height of the Rectangle
      */
     public void changeSides() {
-        int w = getWidth();
-        int h = getHeight();
-        _pointNE = new Point(_pointSW.getX() + h, _pointSW.getY() + w);
+        int tempWidth = _width;
+        _width = _height;
+        _height = tempWidth;
     }
 
     /**
@@ -190,7 +186,7 @@ public class RectangleB {
      * @param r Another Rectangle
      * @return if this RectangleA is in r RectangleA
      */
-    public boolean isIn(RectangleB r){
+    public boolean isIn(RectangleA r){
         return !(_pointSW.isLeft(r.getPointSW()) || _pointSW.isUnder(r.getPointSW()) ||
                 this.getPointNE().isRight(r.getPointNE()) || this.getPointNE().isAbove(r.getPointNE()));
     }
@@ -200,10 +196,11 @@ public class RectangleB {
      * @param r Another Rectangle
      * @return if this RectangleA overlaps r RectangleA
      */
-    public boolean overlap(RectangleB r) {
+    public boolean overlap(RectangleA r) {
         Point rPointSW = r.getPointSW();
         Point rPointNE = r.getPointNE();
         return !(rPointSW.isRight(this.getPointNE()) || rPointSW.isAbove(this.getPointNE()) ||
                 rPointNE.isUnder(_pointSW) || rPointNE.isLeft(_pointSW));
     }
+
 }

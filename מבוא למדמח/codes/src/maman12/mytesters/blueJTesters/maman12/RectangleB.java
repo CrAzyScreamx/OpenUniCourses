@@ -1,5 +1,3 @@
-package maman12;
-
 /**
  * Creates a new Rectangle
  * @author Amit Y
@@ -11,9 +9,9 @@ public class RectangleB {
     private Point _pointNE;
 
     /**
-     * First constructor for objects of class RectangleB Constructs a new rectangle with the specified width, height and it's south west corner is (0,0)
-     * @param w The rectangle width
-     * @param h The rectangle height
+     * Constructs a new Rectangle using width and height
+     * @param w width
+     * @param h height
      */
     public RectangleB(int w, int h) {
         _pointSW = new Point(0,0);
@@ -21,11 +19,10 @@ public class RectangleB {
     }
 
     /**
-     * Second constructor for objects of class RectangleB Constructs a new rectangle with the specified vertices
-     * @param p south western vertex
-     * @param w rectangle width
-     * @param h rectangle height
-     * @see Point
+     * Constructs a new Rectangle using Point, width and height
+     * @param p point of Point class
+     * @param w width
+     * @param h height
      */
     public RectangleB(Point p, int w, int h) {
         _pointSW = new Point(p);
@@ -33,10 +30,9 @@ public class RectangleB {
     }
 
     /**
-     * Third constructor for objects of class RectangleB Constructs a new rectangle with the specified vertices
-     * @param sw south western vertex
-     * @param ne north eastern vertex
-     * @see Point
+     * Constructs a new Rectangle using south-west and north-east points
+     * @param sw south-west point
+     * @param ne north-east point
      */
     public RectangleB(Point sw, Point ne) {
         _pointSW = new Point(sw);
@@ -44,8 +40,8 @@ public class RectangleB {
     }
 
     /**
-     * Copy constructor for objects of class RectangleB Constructs a rectangle using another rectangle
-     * @param r The rectangle from which to construct the new object
+     * Constructs a new Rectangle using another Rectangle
+     * @param r Another Rectangle
      */
     public RectangleB(RectangleB r) {
         _pointSW = new Point(r.getPointSW());
@@ -53,8 +49,8 @@ public class RectangleB {
     }
 
     /**
-     * Returns the South-West point of the rectangle
-     * @return a copy of the s-w point of the rectangle
+     * Returns the width of the Rectangle
+     * @return width of Rectangle
      */
     public int getWidth() {
         return _pointNE.getX() - _pointSW.getX();

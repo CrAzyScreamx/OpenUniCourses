@@ -10,16 +10,16 @@ public class Sudoku {
     private Square3x3[][] _sudoku = new Square3x3[3][3];
 
     public Sudoku() {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
+        for (int row = 0; row < _sudoku.length; row++) {
+            for (int col = 0; col < _sudoku[row].length; col++) {
                 _sudoku[row][col] = new Square3x3();
             }
         }
     }
 
     public Sudoku(Square3x3[][] square3x3Array) {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
+        for (int row = 0; row < _sudoku.length; row++) {
+            for (int col = 0; col < _sudoku[row].length; col++) {
                 _sudoku[row][col] = new Square3x3(square3x3Array[row][col]);
             }
         }
@@ -42,9 +42,5 @@ public class Sudoku {
             if (cSudokuRow % 3 == 0) cSudokuRow = 0;
         }
         return true;
-    }
-
-    public Square3x3[][] getSudoku() {
-        return _sudoku;
     }
 }
