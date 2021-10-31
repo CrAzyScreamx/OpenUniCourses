@@ -2,7 +2,7 @@ package maman11;
 
 import java.util.Scanner;
 
-public class Miliseconds {
+public class Milliseconds {
     public static void main(String[] args) {
 
         long days, hours, minutes, seconds;

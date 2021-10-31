@@ -5,22 +5,28 @@ import java.util.Scanner;
 public class Einstein {
     public static void main(String[] args) {
 
-        long difference, reversedDifference;
-
+        int MIN_NUMBER = 100, MAX_NUMBER = 999;
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to the Einstein magic game");
-        System.out.print("Please enter a 3 digit positive number whose first and last digits are different: ");
+        System.out.println("Please enter a 3 digit positive number whose first and last digits are different: ");
         long number = scan.nextLong();
-        if (number < 100 || number > 999) System.out.println("The number you entered is not a 3 digit positive number");
+        if (number < MIN_NUMBER || number > MAX_NUMBER) System.out.println("The number you entered is not a 3 digit positive number");
         else {
-            if (number/100 == number%10) System.out.println("The first and last digits are the same!");
+            if (number/100 == number%10) System.out.println("The first and last digits of the number should be different");
             else {
                 System.out.println("User number is: " + number);
-                difference = Math.abs(number - ((number%10) * 100 + (number/10)%10*10 + number/100));
+                long firstDigit = number / 100;
+                long secondDigit = number/10%10;
+                long thirdDigit = number % 10;
+                long difference = Math.abs(number - (thirdDigit * 100 + secondDigit*10 + firstDigit));
                 System.out.println("Difference: " + difference);
-                reversedDifference = difference%10*100 + (difference/10)%10*10 + difference/100;
+                firstDigit = difference / 100;
+                secondDigit = difference/10%10;
+                thirdDigit = difference % 10;
+                long reversedDifference = thirdDigit*100 + secondDigit*10 + firstDigit;
                 System.out.println("Reversed Difference: " + reversedDifference);
                 if (difference + reversedDifference == 1089) System.out.println("SUCCEEDED");
+                else System.out.println("FAILED");
             }
 
         }

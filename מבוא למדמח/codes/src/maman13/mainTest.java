@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class mainTest {
 
+    static int test = 6;
+
     public static void main(String[] args) {
         /*int[][] array = new int[3][3];
         Square3x3[][] squareArray = new Square3x3[3][3];

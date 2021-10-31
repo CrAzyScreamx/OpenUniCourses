@@ -22,9 +22,9 @@ public class Square3x3 {
      */
     public Square3x3(int[][] array) {
         fillArrayValues(_square3x3);
-        for (int i = 0; i < Math.min(_square3x3.length, array.length); i++) {
-            for (int j = 0; j < Math.min(_square3x3[i].length, array[i].length); j++) {
-                _square3x3[i][j] = array[i][j];
+        for (int row = 0; row < Math.min(_square3x3.length, array.length); row++) {
+            for (int col = 0; col < Math.min(_square3x3[row].length, array[row].length); col++) {
+                _square3x3[row][col] = array[row][col];
             }
         }
     }
@@ -74,12 +74,12 @@ public class Square3x3 {
      */
     public String toString() {
         String square = "";
-        for (int i = 0; i < _square3x3.length; i++) {
-            for (int j = 0; j < _square3x3[i].length; j++) {
-                if (j == 2) {
-                    square += _square3x3[i][j] + "\n";
+        for (int row = 0; row < _square3x3.length; row++) {
+            for (int col = 0; col < _square3x3[row].length; col++) {
+                if (col == 2) {
+                    square += _square3x3[row][col] + "\n";
                 } else {
-                    square += _square3x3[i][j] + "\t";
+                    square += _square3x3[row][col] + "\t";
                 }
             }
         }
@@ -96,8 +96,8 @@ public class Square3x3 {
         for (int row = 0; row < _square3x3.length; row++) {
             whosThereRow(row, values);
         }
-        for (int i = 1; i < values.length; i++) {
-            if (!values[i]) {
+        for (int row = 1; row < values.length; row++) {
+            if (!values[row]) {
                 return false;
             }
         }
@@ -140,9 +140,9 @@ public class Square3x3 {
      * Fills the array with -1 values ( resetting the array )
      */
     private void fillArrayValues(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = -1;
+        for (int row = 0; row < array.length; row++) {
+            for (int col = 0; col < array[row].length; col++) {
+                array[row][col] = -1;
             }
         }
     }
