@@ -75,6 +75,7 @@ public class SudokuTester
         sqrBoard[2][1] = new Square3x3(sqr7);
         sqrBoard[2][2] = new Square3x3(sqr8);
         board = new Sudoku(sqrBoard);
+        boolean test = board.isValid();
         System.out.println("Board #2: " + board.isValid());
         System.out.println("Currect: false\n");
         
