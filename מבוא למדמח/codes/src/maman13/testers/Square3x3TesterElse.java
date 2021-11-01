@@ -13,7 +13,7 @@ import maman13.Square3x3;
 
 import java.util.Scanner;
 
-public class Square3x3Tester
+public class Square3x3TesterElse
 {
     public static void main(String[] args)
     {

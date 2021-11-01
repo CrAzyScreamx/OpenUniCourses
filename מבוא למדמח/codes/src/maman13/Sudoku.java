@@ -74,6 +74,7 @@ public class Sudoku {
             for (int col = 0; col < 3; col++) {
                 transposed.setXY(row, col, board.getCell(col, row));
             }
+            board.whosThereCol(colBoard, values);
         }
         return transposed;
     }

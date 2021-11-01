@@ -13,7 +13,7 @@ import maman13.Square3x3;
 import maman13.Sudoku;
 
 import java.util.Scanner;
-public class SudokuTester
+public class SudokuTesterElse
 {
     public static void main(String[] args)
     {
