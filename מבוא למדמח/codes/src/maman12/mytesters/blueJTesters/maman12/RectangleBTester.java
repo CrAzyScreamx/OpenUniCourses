@@ -84,7 +84,7 @@ public class RectangleBTester {
         if (r9.getPointSW().equals(new Point(2, 3)) &&
                 r9.getPointNE().equals(new Point(7, 11))) ok();
         else error("pointSW=(2,3),pointNE=(7,11)", "pointSW=" + r9.getPointSW() +
-                ",pointNE=(7,11)" + r9.getPointNE());
+                ",pointNE=" + r9.getPointNE());
 
         print("equals function: ");
         RectangleB r10 = new RectangleB(5, 5);

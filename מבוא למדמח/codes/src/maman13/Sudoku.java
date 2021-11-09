@@ -1,7 +1,5 @@
 package maman13;
 
-import java.util.Arrays;
-
 /**
  * Constructs a sudoku 9x9 board
  * @author Amit Y
@@ -34,48 +32,35 @@ public class Sudoku {
                 if (!board.allThere()) return false;
             }
         }
-        return validateRow(_sudoku) && validateRow(transposeBoard());
-    }
-
-    private boolean validateRow(Square3x3[][] board) {
-        int rowCounter = 0;
-        boolean checkRows = true;
-        for (int row = 0; row < board.length; row++) {
-            boolean[] values = new boolean[10];
-            for (int col = 0; col < board[row].length; col++) {
-                board[row][col].whosThereRow(rowCounter, values);
-            }
-            System.out.println(Arrays.toString(values));
-            rowCounter++;
-            if (rowCounter == 3) rowCounter = 0;
-            for (int val = 1; val < values.length; val++) {
-                if (!values[val] && checkRows) {
-                    checkRows = false;
-                    break;
-                }
-            }
-        }
-        return checkRows;
-    }
-
-    private Square3x3[][] transposeBoard() {
-        Square3x3[][] transposed = new Square3x3[3][3];
         for (int row = 0; row < _sudoku.length; row++) {
             for (int col = 0; col < _sudoku[row].length; col++) {
-                transposed[row][col] = new Square3x3(transpose3x3Board(_sudoku[col][row]));
+                if (!validateRow(row, col) || !validateCol(col, row)) return false;
             }
         }
-        return transposed;
+        return true;
     }
 
-    private Square3x3 transpose3x3Board(Square3x3 board) {
-        Square3x3 transposed = new Square3x3();
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                transposed.setXY(row, col, board.getCell(col, row));
-            }
+    private boolean validateRow(int rowSudoku, int rowBoard) {
+        boolean[] values = new boolean[10];
+        for (int col = 0; col < _sudoku[rowSudoku].length; col++) {
+            Square3x3 board = new Square3x3(_sudoku[rowSudoku][col]);
+            board.whosThereRow(rowBoard, values);
+        }
+        for (int val = 1; val < values.length; val++) {
+            if (!values[val]) return false;
+        }
+        return true;
+    }
+
+    private boolean validateCol(int colSudoku, int colBoard) {
+        boolean[] values = new boolean[10];
+        for (int row = 0; row < _sudoku.length; row++) {
+            Square3x3 board = new Square3x3(_sudoku[row][colSudoku]);
             board.whosThereCol(colBoard, values);
         }
-        return transposed;
+        for (int val = 1; val < values.length; val++) {
+            if (!values[val]) return false;
+        }
+        return true;
     }
 }

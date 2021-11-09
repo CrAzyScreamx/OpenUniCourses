@@ -14,7 +14,7 @@ public class RectangleAStudentTester
         
         System.out.println("testing first constructor and getters:");
 
-		RectangleA r0 = new RectangleA(3,5);
+		RectangleA r0 = new RectangleA(3,5); 
 		if (r0.getWidth() != 3 || r0.getHeight() != 5 ||
 				!r0.getPointSW().equals(new Point(0,0)) || !r0.getPointNE().equals(new Point(3, 5)))
 			System.out.println("\t ERROR -  constructor and getters expected Width=3 Height=5 PointSW=(0,0) actual= " + r0);
@@ -23,7 +23,7 @@ public class RectangleAStudentTester
 		
 		
 		System.out.println("testing second constructor and getters:");
-		RectangleA r1 = new RectangleA(new Point(1,2),3,5); 
+		RectangleA r1 = new RectangleA(new Point(1,2),3,5);
 		if (r1.getWidth() != 3 || r1.getHeight() != 5 ||
 				!r1.getPointSW().equals(new Point(1,2)))
 			System.out.println("\t ERROR -  constructor and getters expected Width=3 Height=5 PointSW=(1,2) actual= " + r1);
