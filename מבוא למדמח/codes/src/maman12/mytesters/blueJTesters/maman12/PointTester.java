@@ -1,9 +1,6 @@
 import java.util.Objects;
 
 
-/*
-Point Tester: Amit Yanay
- */
 public class PointTester {
 
     // Don't touch these, it's for colour purposes
