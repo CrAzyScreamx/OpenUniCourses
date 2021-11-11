@@ -226,7 +226,7 @@ public class RectangleATester {
         RectangleA r28 = new RectangleA(p7, 2, 2);
         r28.getPointSW().setX(8);
         if (r28.getPointSW().equals(p7)) ok();
-        else error(true, r28.getPointNE().equals(p7));
+        else error(true, r28.getPointSW().equals(p7));
 
         print("Aliasing on setPointSW function: ");
         Point p8 = new Point(3, 5);
