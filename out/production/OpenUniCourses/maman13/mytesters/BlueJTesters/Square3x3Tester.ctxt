@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Square3x3Tester
+comment0.text=\r\n\ Maman\ 13\ tester\ -\ square3x3\ Tester\r\n\ Amit\ Yanay\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=rows\ columns
+comment2.target=java.lang.Object[]\ square3x3Generator(int,\ int)
+comment3.params=array
+comment3.target=void\ fillArrayValues(int[][])
+comment4.params=s
+comment4.target=void\ print(java.lang.String)
+comment5.params=
+comment5.target=void\ pok()
+comment6.params=expected\ actual
+comment6.target=void\ err(java.lang.Object,\ java.lang.Object)
+comment7.params=s\ expected
+comment7.target=void\ error(Square3x3,\ int[][])
+comment8.params=s\ expected
+comment8.target=boolean\ checkValidation(Square3x3,\ int[][])
+comment9.params=vals\ printHelperArray\ expectedTrueVals
+comment9.target=boolean\ validateValuesInValArray(boolean[],\ boolean[],\ int[])
+numComments=10

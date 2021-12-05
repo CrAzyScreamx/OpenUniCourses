@@ -1,19 +1,28 @@
 package maman13;
 
 /**
- * Creates a 3x3 Square
+ * Represents a 3 by 3 square containing numbers
  * @author Amit Y
  * @version 20/10/2021
  */
 public class Square3x3 {
 
-    private int[][] _square3x3 = new int[3][3];
+    private int[][] _square3x3;
+    private static final int MIN_VALUE = 0;
+    private static final int DEFAULT_ROW = 3;
+    private static final int DEFAULT_COL = 3;
+    private static final int MAX_VALUE = 10;
 
     /**
      * Constructs a two-dimensional array with the values of -1 in each cell
      */
     public Square3x3() {
-        fillArrayValues(_square3x3);
+        _square3x3 = new int[DEFAULT_ROW][DEFAULT_COL];
+        for (int row = 0; row < _square3x3.length; row++) {
+            for (int col = 0; col < _square3x3[row].length; col++) {
+                _square3x3[row][col] = -1;
+            }
+        }
     }
 
     /**
@@ -21,7 +30,7 @@ public class Square3x3 {
      * @param array another array of x dimensions
      */
     public Square3x3(int[][] array) {
-        fillArrayValues(_square3x3);
+        this();
         for (int row = 0; row < Math.min(_square3x3.length, array.length); row++) {
             for (int col = 0; col < Math.min(_square3x3[row].length, array[row].length); col++) {
                 _square3x3[row][col] = array[row][col];
@@ -30,14 +39,16 @@ public class Square3x3 {
     }
 
     /**
-     * Constructs a two-dimensional array using values from another Square3x3 array
+     * Constructs a two-dimensional array using values from another Square3x3 two-dimensional array
      * @param other another Square3x3 array
      */
     public Square3x3(Square3x3 other) {
-        _square3x3 = new int[3][3];
-        for (int row = 0; row < _square3x3.length; row++) {
-            for (int col = 0; col < _square3x3[row].length; col++) {
-                _square3x3[row][col] = other.getCell(row, col);
+        this();
+        if (other != null) {
+            for (int row = 0; row < _square3x3.length; row++) {
+                for (int col = 0; col < _square3x3[row].length; col++) {
+                    _square3x3[row][col] = other._square3x3[row][col];
+                }
             }
         }
     }
@@ -49,7 +60,7 @@ public class Square3x3 {
      * @return value at row and column
      */
     public int getCell(int row, int col) {
-        if (row < _square3x3.length && row >= 0 && col < _square3x3[row].length && col >= 0) {
+        if (row < _square3x3.length && row >= MIN_VALUE && col < _square3x3[row].length && col >= MIN_VALUE) {
             return _square3x3[row][col];
         } else {
             return -1;
@@ -63,7 +74,7 @@ public class Square3x3 {
      * @param value value to set at row,column index
      */
     public void setXY(int row, int col, int value) {
-        if (row < _square3x3.length && row >= 0 && col < _square3x3[row].length && col >= 0) {
+        if (row < _square3x3.length && row >= MIN_VALUE && col < _square3x3[row].length && col >= MIN_VALUE) {
             _square3x3[row][col] = value;
         }
     }
@@ -112,10 +123,12 @@ public class Square3x3 {
      * @param values a boolean array
      */
     public void whosThereRow(int row, boolean[] values) {
-        for (int col = 0; col < _square3x3[row].length; col++) {
-            int value = _square3x3[row][col];
-            if (value > 0 && value < 10) {
-                values[value] = true;
+        if (row < _square3x3.length && row >= MIN_VALUE) {
+            for (int col = 0; col < _square3x3[row].length; col++) {
+                int value = _square3x3[row][col];
+                if (value > MIN_VALUE && value < MAX_VALUE) {
+                    values[value] = true;
+                }
             }
         }
     }
@@ -128,21 +141,12 @@ public class Square3x3 {
      * @param values a boolean array
      */
     public void whosThereCol(int col, boolean[] values) {
-        for (int row = 0; row < _square3x3.length; row++) {
-            int value = _square3x3[row][col];
-            if (value > 0 && value < 10) {
-                values[value] = true;
-            }
-        }
-    }
-
-    /**
-     * Fills the array with -1 values ( resetting the array )
-     */
-    private void fillArrayValues(int[][] array) {
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[row].length; col++) {
-                array[row][col] = -1;
+        if (col < _square3x3[MIN_VALUE].length && col >= MIN_VALUE) {
+            for (int row = 0; row < _square3x3.length; row++) {
+                int value = _square3x3[row][col];
+                if (value > MIN_VALUE && value < MAX_VALUE) {
+                    values[value] = true;
+                }
             }
         }
     }

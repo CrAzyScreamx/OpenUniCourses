@@ -10,6 +10,8 @@ public class RectangleA {
     private int _width;
     private int _height;
     private Point _pointSW;
+    private final int MIN_VALUE = 0;
+    private final int DEF_VALUE = 1;
 
     /**
      * First constructor for objects of class RectangleA Constructs a new rectangle with the specified width, height and it's south west corner is (0,0)
@@ -18,10 +20,16 @@ public class RectangleA {
      */
     public RectangleA(int w, int h) {
         _pointSW = new Point(0, 0);
-        if (w <= 0) _width = 1;
-        else _width = w;
-        if (h <= 0) _height = 1;
-        else _height = h;
+        if (w <= MIN_VALUE) {
+            _width = DEF_VALUE;
+        } else {
+            _width = w;
+        }
+        if (h <= MIN_VALUE) {
+            _height = DEF_VALUE;
+        } else {
+            _height = h;
+        }
     }
 
     /**
@@ -32,11 +40,8 @@ public class RectangleA {
      * @see Point
      */
     public RectangleA(Point p, int w, int h) {
+        this(w, h);
         _pointSW = new Point(p);
-        if (w <= 0) _width = 1;
-        else _width = w;
-        if (h <= 0) _height = 1;
-        else _height = h;
     }
 
     /**
@@ -45,9 +50,7 @@ public class RectangleA {
      * @param ne north eastern vertex
      */
     public RectangleA(Point sw, Point ne) {
-        _height = ne.getY() - sw.getY();
-        _width = ne.getX() - sw.getX();
-        _pointSW = new Point(sw);
+        this(sw,ne.getX() - sw.getX(), ne.getY() - sw.getY());
     }
 
     /**
@@ -55,9 +58,7 @@ public class RectangleA {
      * @param r The rectangle from which to construct the new object
      */
     public RectangleA(RectangleA r) {
-        _width = r.getWidth();
-        _height = r.getHeight();
-        _pointSW = r.getPointSW();
+        this(r._pointSW, r.getWidth(), r.getHeight());
     }
 
     /**
@@ -89,7 +90,7 @@ public class RectangleA {
      * @param w the width of the rectangle to set to
      */
     public void setWidth(int w) {
-        if (w > 0) _width = w;
+        if (w > MIN_VALUE) _width = w;
     }
 
     /**
@@ -97,7 +98,7 @@ public class RectangleA {
      * @param h the height of the rectangle to set to
      */
     public void setHeight(int h) {
-        if (h > 0) _height = h;
+        if (h > MIN_VALUE) _height = h;
     }
 
     /**
@@ -147,7 +148,7 @@ public class RectangleA {
      * @return true iff other and this rectangle are equal
      */
     public boolean equals(RectangleA other) {
-        return _width == other.getWidth() && _height == other.getHeight() && _pointSW.equals(other.getPointSW());
+        return _width == other._width && _height == other._height && _pointSW.equals(other.getPointSW());
     }
 
     /**

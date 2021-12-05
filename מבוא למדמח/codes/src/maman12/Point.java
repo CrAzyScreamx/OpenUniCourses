@@ -25,8 +25,9 @@ public class Point {
      * @param other The point from which to construct the new object
      */
     public Point(Point other) {
-        _x = other.getX();
-        _y = other.getY();
+        // _x = other.getX();
+        // _y = other.getY();
+       this(other.getX(), other.getY());
     }
 
     /**

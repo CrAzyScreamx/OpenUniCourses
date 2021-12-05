@@ -117,8 +117,9 @@ public class RectangleBTester {
 
         print("changeSides function: ");
         RectangleB r13 = new RectangleB(new Point(3, 8), 3, 5);
-        if (r13.getPointNE().equals(new Point(6, 13))) okn();
-        else errorn(new Point(6, 13), r13.getPointNE());
+        r13.changeSides();
+        if (r13.getWidth() == 5 && r13.getHeight() == 3) okn();
+        else errorn("width=5, height=3, pointSW=(3,8)",r13);
 
         RectangleB r17 = new RectangleB(10, 10);
         RectangleB r18 = new RectangleB(new Point(1, 1), 1, 1);

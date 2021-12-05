@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=SudokuTester
+comment0.text=\r\n\ Maman\ 13\ Tester\ -\ Sudoku\r\n\ Amit\ Yanay\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment10.params=
+comment10.target=int[]\ generateGrid()
+comment11.params=grid
+comment11.target=boolean\ isPerfect(int[])
+comment11.text=\r\nTests\ an\ int\ array\ of\ length\ 81\ to\ see\ if\ it\ is\ a\ valid\ Sudoku\ grid.\ i.e.\ 1\ through\ 9\ appearing\ once\ each\ in\ every\ row,\ column,\ and\ box\r\n@param\ grid\ an\ array\ with\ length\ 81\ to\ be\ tested\r\n@return\ a\ boolean\ representing\ if\ the\ grid\ is\ valid\r\n
+comment2.params=s
+comment2.target=void\ print(java.lang.String)
+comment3.params=
+comment3.target=void\ pok()
+comment4.params=expected\ actual
+comment4.target=void\ perror(java.lang.Object,\ java.lang.Object)
+comment5.params=type
+comment5.target=java.lang.Object[]\ generateSameIn(int)
+comment6.params=s
+comment6.target=void\ generatedValid(Square3x3[][])
+comment7.params=enter
+comment7.target=Square3x3\ eVals(int[])
+comment8.params=s
+comment8.target=void\ fillSudoku(Square3x3[][])
+comment9.params=grid
+comment9.target=void\ printGrid(int[])
+numComments=12

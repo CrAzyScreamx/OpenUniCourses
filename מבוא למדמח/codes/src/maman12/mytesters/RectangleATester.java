@@ -235,6 +235,16 @@ public class RectangleATester {
         p8.setY(6);
         if (!r29.getPointSW().equals(p8)) ok();
         else error(false, r29.getPointSW().equals(p8));
+
+        RectangleA rtest1 = new RectangleA(new Point(4,0), new Point(6,1));
+        RectangleA rtest2 = new RectangleA(new Point(-1, -1), new Point(5, 5));
+        System.out.println(rtest1.isIn(rtest2)); // False
+        System.out.println(rtest2.isIn(rtest1)); // False
+
+        rtest1.changeSides(); // New points: pointSW(4,0), w= 1, h= 2 => pointNE(5, 2);
+        rtest2.changeSides(); // New Points: pointSW(-1, -1), w=6, h=6 => pointNE(5,5)
+        System.out.println(rtest1.isIn(rtest2)); // True
+        System.out.println(rtest2.isIn(rtest1)); // False
     }
     private static void print(String sentence) {
         System.out.print(ANSI_RESET + sentence);

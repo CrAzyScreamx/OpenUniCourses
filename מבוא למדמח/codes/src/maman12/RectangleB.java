@@ -9,6 +9,8 @@ public class RectangleB {
 
     private Point _pointSW;
     private Point _pointNE;
+    private final int DEFAULT_VALUE = 1;
+    private final int MIN_VALUE = 0;
 
     /**
      * First constructor for objects of class RectangleB Constructs a new rectangle with the specified width, height and it's south west corner is (0,0)
@@ -17,7 +19,7 @@ public class RectangleB {
      */
     public RectangleB(int w, int h) {
         _pointSW = new Point(0,0);
-        _pointNE = new Point(w, h);
+        _pointNE = new Point(Math.max(DEFAULT_VALUE, w), Math.max(DEFAULT_VALUE, h)); // Uses Math library to check if width and height are greater than 0
     }
 
     /**
@@ -28,8 +30,9 @@ public class RectangleB {
      * @see Point
      */
     public RectangleB(Point p, int w, int h) {
+        this(w, h);
         _pointSW = new Point(p);
-        _pointNE = new Point(p.getX() + w, p.getY() + h);
+        _pointNE.move(p.getX(), p.getY());
     }
 
     /**
@@ -48,8 +51,7 @@ public class RectangleB {
      * @param r The rectangle from which to construct the new object
      */
     public RectangleB(RectangleB r) {
-        _pointSW = new Point(r.getPointSW());
-        _pointNE = new Point(r.getPointNE());
+        this(r._pointSW, r._pointNE);
     }
 
     /**
@@ -81,9 +83,8 @@ public class RectangleB {
      * @param w new width
      */
     public void setWidth(int w) {
-        if (w > 0) {
-            int yPointNE = _pointNE.getY();
-            _pointNE = new Point(_pointSW.getX() + w, yPointNE);
+        if (w > MIN_VALUE) {
+            _pointNE.setX(_pointSW.getX() + w);
         }
     }
 
@@ -92,9 +93,8 @@ public class RectangleB {
      * @param h new height
      */
     public void setHeight(int h) {
-        if (h > 0) {
-            int xPointNE = _pointNE.getX();
-            _pointNE = new Point(xPointNE, _pointSW.getY() + h);
+        if (h > MIN_VALUE) {
+            _pointNE.setY(_pointSW.getY() + h);
         }
     }
 
@@ -180,9 +180,10 @@ public class RectangleB {
      * Switches between the width and height of the Rectangle
      */
     public void changeSides() {
-        int w = getWidth();
-        int h = getHeight();
-        _pointNE = new Point(_pointSW.getX() + h, _pointSW.getY() + w);
+        int w = getWidth(); // width of the Rectangle
+        int h = getHeight(); // height of the Rectangle
+        setWidth(h);
+        setHeight(w);
     }
 
     /**
@@ -193,6 +194,7 @@ public class RectangleB {
     public boolean isIn(RectangleB r){
         return !(_pointSW.isLeft(r.getPointSW()) || _pointSW.isUnder(r.getPointSW()) ||
                 this.getPointNE().isRight(r.getPointNE()) || this.getPointNE().isAbove(r.getPointNE()));
+        //
     }
 
     /**

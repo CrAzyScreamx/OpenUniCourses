@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Sudoku
+comment0.text=\r\n\ Constructs\ a\ sudoku\ 9x9\ board\r\n\ @author\ Amit\ Y\r\n\ @version\ 20/10/2021\r\n
+comment1.params=
+comment1.target=Sudoku()
+comment2.params=square3x3Array
+comment2.target=Sudoku(Square3x3[][])
+comment3.params=
+comment3.target=boolean\ isValid()
+comment4.params=row\ rowBlock
+comment4.target=boolean\ validateRow(int,\ int)
+comment5.params=col\ colBlock
+comment5.target=boolean\ validateCol(int,\ int)
+numComments=6

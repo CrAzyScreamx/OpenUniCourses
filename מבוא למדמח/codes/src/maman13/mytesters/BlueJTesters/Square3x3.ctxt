@@ -1,0 +1,31 @@
+#BlueJ class context
+comment0.target=Square3x3
+comment0.text=\r\n\ Creates\ a\ 3x3\ Square\r\n\ @author\ Amit\ Y\r\n\ @version\ 20/10/2021\r\n
+comment1.params=
+comment1.target=Square3x3()
+comment1.text=\r\n\ Constructs\ a\ two-dimensional\ array\ with\ the\ values\ of\ -1\ in\ each\ cell\r\n
+comment2.params=array
+comment2.target=Square3x3(int[][])
+comment2.text=\r\n\ Constructs\ a\ two-dimensional\ array\ with\ values\ from\ another\ array\ and\ rest\ of\ unfilled\ values\ is\ -1\r\n\ @param\ array\ another\ array\ of\ x\ dimensions\r\n
+comment3.params=other
+comment3.target=Square3x3(Square3x3)
+comment3.text=\r\n\ Constructs\ a\ two-dimensional\ array\ using\ values\ from\ another\ Square3x3\ array\r\n\ @param\ other\ another\ Square3x3\ array\r\n
+comment4.params=row\ col
+comment4.target=int\ getCell(int,\ int)
+comment4.text=\r\n\ Returns\ cell\ at\ a\ specific\ row\ and\ column\r\n\ @param\ row\ row\ in\ the\ array\r\n\ @param\ col\ column\ in\ the\ array\r\n\ @return\ value\ at\ row\ and\ column\r\n
+comment5.params=row\ col\ value
+comment5.target=void\ setXY(int,\ int,\ int)
+comment5.text=\r\n\ Sets\ value\ at\ a\ specific\ cell\r\n\ @param\ row\ row\ in\ the\ array\r\n\ @param\ col\ column\ in\ the\ array\r\n\ @param\ value\ value\ to\ set\ at\ row,column\ index\r\n
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ Returns\ a\ String\ which\ looks\ like\ a\ square\r\n\ @return\ a\ sentence\ in\ format\:\ "x\\ty\\tz\\n"\ 3\ times\r\n
+comment7.params=
+comment7.target=boolean\ allThere()
+comment7.text=\r\n\ Checks\ if\ the\ board\ contains\ all\ values\ 1-9\r\n\ @return\ if\ board\ contains\ 1-9\r\n
+comment8.params=row\ values
+comment8.target=void\ whosThereRow(int,\ boolean[])
+comment8.text=\r\n\ Gets\ row\ number\ and\ boolean\ with\ 10\ indexes,\ for\ each\ 1-9\ cell\ values\ in\ the\ specific\ row\ it'll\ set\ the\r\n\ value\ at\ the\ index\ (\ cell\ values\ )\ to\ true\ (\ ex.\ 1,3,5\ will\ set\ in\ the\ values\ array\r\n\ values[1],values[5],values[3]\=true\ )\r\n\ @param\ row\ row\ between\ 0-2\r\n\ @param\ values\ a\ boolean\ array\r\n
+comment9.params=col\ values
+comment9.target=void\ whosThereCol(int,\ boolean[])
+comment9.text=\r\n\ Gets\ column\ number\ and\ boolean\ with\ 10\ indexes,\ for\ each\ 1-9\ cell\ values\ in\ the\ specific\ column\ it'll\ set\ the\r\n\ value\ at\ the\ index\ (\ cell\ values\ )\ to\ true\ (\ ex.\ 1,3,5\ will\ set\ in\ the\ values\ array\r\n\ values[1],values[5],values[3]\=true\ )\r\n\ @param\ col\ column\ between\ 0-2\r\n\ @param\ values\ a\ boolean\ array\r\n
+numComments=10

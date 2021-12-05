@@ -230,6 +230,7 @@ public class RectangleATester {
         p8.setY(6);
         if (!r29.getPointSW().equals(p8)) ok();
         else error(false, r29.getPointSW().equals(p8));
+        
     }
     private static void print(String sentence) {
         System.out.print(ANSI_RESET + sentence);
