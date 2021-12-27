@@ -8,19 +8,20 @@ package maman13;
 public class Square3x3 {
 
     private int[][] _square3x3;
-    private static final int MIN_VALUE = 0;
-    private static final int DEFAULT_ROW = 3;
-    private static final int DEFAULT_COL = 3;
+    private static final int DEFAULT_CELL_VALUE = -1;
+    private static final int DEFAULT_ROW_COL = 3;
     private static final int MAX_VALUE = 10;
+    private static final int LAST_LOOP_INDEX = 2;
+    private static final int FIRST_VALID_INDEX = 1;
 
     /**
      * Constructs a two-dimensional array with the values of -1 in each cell
      */
     public Square3x3() {
-        _square3x3 = new int[DEFAULT_ROW][DEFAULT_COL];
+        _square3x3 = new int[DEFAULT_ROW_COL][DEFAULT_ROW_COL];
         for (int row = 0; row < _square3x3.length; row++) {
             for (int col = 0; col < _square3x3[row].length; col++) {
-                _square3x3[row][col] = -1;
+                _square3x3[row][col] = DEFAULT_CELL_VALUE;
             }
         }
     }
@@ -36,6 +37,7 @@ public class Square3x3 {
                 _square3x3[row][col] = array[row][col];
             }
         }
+
     }
 
     /**
@@ -43,14 +45,7 @@ public class Square3x3 {
      * @param other another Square3x3 array
      */
     public Square3x3(Square3x3 other) {
-        this();
-        if (other != null) {
-            for (int row = 0; row < _square3x3.length; row++) {
-                for (int col = 0; col < _square3x3[row].length; col++) {
-                    _square3x3[row][col] = other._square3x3[row][col];
-                }
-            }
-        }
+        this(other._square3x3);
     }
 
     /**
@@ -60,10 +55,10 @@ public class Square3x3 {
      * @return value at row and column
      */
     public int getCell(int row, int col) {
-        if (row < _square3x3.length && row >= MIN_VALUE && col < _square3x3[row].length && col >= MIN_VALUE) {
+        if (rowColInRange(row) && rowColInRange(col)) {
             return _square3x3[row][col];
         } else {
-            return -1;
+            return DEFAULT_CELL_VALUE;
         }
     }
 
@@ -74,7 +69,7 @@ public class Square3x3 {
      * @param value value to set at row,column index
      */
     public void setXY(int row, int col, int value) {
-        if (row < _square3x3.length && row >= MIN_VALUE && col < _square3x3[row].length && col >= MIN_VALUE) {
+        if (rowColInRange(row) && rowColInRange(col)) {
             _square3x3[row][col] = value;
         }
     }
@@ -87,10 +82,11 @@ public class Square3x3 {
         String square = "";
         for (int row = 0; row < _square3x3.length; row++) {
             for (int col = 0; col < _square3x3[row].length; col++) {
-                if (col == 2) {
-                    square += _square3x3[row][col] + "\n";
+                square += _square3x3[row][col];
+                if (col == LAST_LOOP_INDEX) {
+                    square += "\n";
                 } else {
-                    square += _square3x3[row][col] + "\t";
+                    square += "\t";
                 }
             }
         }
@@ -102,12 +98,12 @@ public class Square3x3 {
      * @return if board contains 1-9
      */
     public boolean allThere() {
-        boolean[] values = new boolean[10];
+        boolean[] values = new boolean[MAX_VALUE];
         // Uses whosThereRow method to check numbers in each row specifically
         for (int row = 0; row < _square3x3.length; row++) {
             whosThereRow(row, values);
         }
-        for (int row = 1; row < values.length; row++) {
+        for (int row = FIRST_VALID_INDEX; row < values.length; row++) {
             if (!values[row]) {
                 return false;
             }
@@ -123,10 +119,10 @@ public class Square3x3 {
      * @param values a boolean array
      */
     public void whosThereRow(int row, boolean[] values) {
-        if (row < _square3x3.length && row >= MIN_VALUE) {
+        if (rowColInRange(row)) {
             for (int col = 0; col < _square3x3[row].length; col++) {
                 int value = _square3x3[row][col];
-                if (value > MIN_VALUE && value < MAX_VALUE) {
+                if (value > 0 && value < MAX_VALUE) {
                     values[value] = true;
                 }
             }
@@ -141,14 +137,23 @@ public class Square3x3 {
      * @param values a boolean array
      */
     public void whosThereCol(int col, boolean[] values) {
-        if (col < _square3x3[MIN_VALUE].length && col >= MIN_VALUE) {
+        if (rowColInRange(col)) {
             for (int row = 0; row < _square3x3.length; row++) {
                 int value = _square3x3[row][col];
-                if (value > MIN_VALUE && value < MAX_VALUE) {
+                if (value > 0 && value < MAX_VALUE) {
                     values[value] = true;
                 }
             }
         }
+    }
+
+    /**
+     * This function checks if the number given is between 0 and 2.
+     * @param rowCol the number given to the function
+     * @return true if it's between 0-2, false otherwise
+     */
+    private boolean rowColInRange(int rowCol) {
+        return rowCol >= 0 && rowCol < DEFAULT_ROW_COL;
     }
 
 

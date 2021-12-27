@@ -1,4 +1,6 @@
- import java.util.Arrays;
+import maman13.Square3x3;
+
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**

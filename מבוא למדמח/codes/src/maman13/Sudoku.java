@@ -8,14 +8,16 @@ package maman13;
 public class Sudoku {
 
     private Square3x3[][] _sudoku;
-    private static final int DEFAULT_ROW = 3, DEFAULT_COL = 3;
+    private static final int DEFAULT_ROW_COL = 3;
+    private static final int BOOLEAN_ARRAY_VALUE = 10;
+    private static final int FIRST_VALID_INDEX = 1;
 
     /**
      * Constructs a new Sudoku board filled with -1 in all cells using Square3x3 constructor
      * @see Square3x3
      */
     public Sudoku() {
-        _sudoku = new Square3x3[DEFAULT_ROW][DEFAULT_COL];
+        _sudoku = new Square3x3[DEFAULT_ROW_COL][DEFAULT_ROW_COL];
         for (int row = 0; row < _sudoku.length; row++) {
             for (int col = 0; col < _sudoku[row].length; col++) {
                 _sudoku[row][col] = new Square3x3();
@@ -68,17 +70,12 @@ public class Sudoku {
          * After taking both of these it's checking for board 0 to board 2 the numbers in the same row and
          * returns true if all numbers present in the same Sudoku board
          */
-        boolean[] values = new boolean[10];
+        boolean[] values = new boolean[BOOLEAN_ARRAY_VALUE];
         for (int col = 0; col < _sudoku[rowSudoku].length; col++) {
             Square3x3 squareBlock = _sudoku[rowSudoku][col];
-            squareBlock.whosThereRow(rowBlock, values); // Checks the same row in each square inside the board for ..its values.
+            squareBlock.whosThereRow(rowBlock, values); // Checks the same row in each square inside the board for its values.
         }
-        for (int i = 1; i < values.length; i++) {
-            if (!values[i]) {
-                return false;
-            }
-        }
-        return true;
+        return isValidArray(values);
     }
 
     /**
@@ -93,17 +90,24 @@ public class Sudoku {
          * After taking both of these it's checking for board 0 to board 2 the numbers in the same column and
          * returns true if all numbers present in the same Sudoku board
          */
-        boolean[] values = new boolean[10];
+        boolean[] values = new boolean[BOOLEAN_ARRAY_VALUE];
         for (int row = 0; row < _sudoku.length; row++) {
             Square3x3 squareBlock = _sudoku[row][col];
             squareBlock.whosThereCol(colBlock, values); // Checks the same column in each square inside the board for its values.
         }
-        for (int i = 1; i < values.length; i++) {
-            if (!values[i]) {
-                return false;
-            }
+        return isValidArray(values);
+    }
+
+    /**
+     * Private function which receives a boolean array and checks if all indexes from 1-9 are true.
+     * His purpose is to check if the given row or column is valid or not ( has all values 1-9 )
+     * @param values - the value boolean array
+     * @return true if indexes 1-9 are true, false otherwise
+     */
+    private boolean isValidArray(boolean[] values) {
+        for (int i = FIRST_VALID_INDEX; i < values.length; i++) {
+            if (!values[i]) return false;
         }
         return true;
     }
-
 }

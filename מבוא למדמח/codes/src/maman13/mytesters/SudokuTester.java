@@ -178,6 +178,15 @@ public class SudokuTester {
         if (aliasingValid) pok();
         else perror(false, true + " (NOTE: Prevent aliasing by inserting every object as new Square3x3())");
         // ASSERTIONS
+
+        for (int i = 0; i <= 1000000; i++) {
+            fillSudoku(validSquare);
+            Sudoku tenThousand = new Sudoku(validSquare);
+            String sen = String.format("Sudoku number %s: ", i);
+            if (tenThousand.isValid()) sen += "OK";
+            else sen += "Error";
+            System.out.println(sen);
+        }
     }
 
     private static void print(String s) {
@@ -216,14 +225,14 @@ public class SudokuTester {
             int cell21 = sameInX[genRow][genCol].getCell(2,genColCell);
             sameInX[genRow][genCol].setXY(0,genColCell,cell21);
             sameInX[genRow][genCol].setXY(2,genColCell,cell01);
-            sen += String.format("| between cell0%s and cell2%s)", cell01, cell21);
+            sen += String.format("| between cell0%s and cell2%s)", genColCell, genColCell);
         } else if (type == 3) { // same In Column
             int genRowCell = ThreadLocalRandom.current().nextInt(0, 3);
             int cell00 = sameInX[genRow][genCol].getCell(genRowCell,0);
             int cell02 = sameInX[genRow][genCol].getCell(genRowCell,2);
             sameInX[genRow][genCol].setXY(genRowCell,0,cell02);
             sameInX[genRow][genCol].setXY(genRowCell,2,cell00);
-            sen += String.format("| between cell%s0 and cell%s2)", cell00, cell02);
+            sen += String.format("| between cell%s0 and cell%s2)", genRowCell, genRowCell);
         }
         // Otherwise, it'll return valid state of a sudoku ( valid complete Sudoku )
         return new Object[]{new Sudoku(sameInX), sen};

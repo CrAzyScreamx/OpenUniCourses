@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OpenUniCourses:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OpenUniCourses_jar</output-path>
+    <root id="archive" name="OpenUniCourses.jar">
+      <element id="module-output" name="OpenUniCourses" />
+    </root>
+  </artifact>
+</component>
