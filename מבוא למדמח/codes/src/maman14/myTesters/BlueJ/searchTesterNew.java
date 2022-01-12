@@ -18,9 +18,9 @@ public class searchTesterNew extends Ex14 {
         boolean arr1x1t = search(searchArray, 2);
         boolean arr1x1f = search(searchArray, 3);
         if (arr1x1t) print("Returned OK for number 2");
-        else err(2, false);
+        else errf(2);
         if (!arr1x1f) print("Returned OK for number 3");
-        else err(3, true);
+        else errt(3);
         print("");
 
         print("****Checking 8x8 array****\n");
@@ -139,10 +139,11 @@ public class searchTesterNew extends Ex14 {
                 {122,124,114,116,90,92,82,84},
                 {128,126,120,118,96,94,88,86}
         };
-        if (needToFind && !search(arr, num)) {
-            err(num, true);
-        } else if (!needToFind && search(arr, num)) {
-            err(num, false);
+        boolean status = search(arr, num);
+        if (needToFind && !status) {
+            errf(num);
+        } else if (!needToFind && status) {
+            errt(num);
         } else {
             print(String.format("Returned OK for %s", num));
         }
@@ -167,22 +168,22 @@ public class searchTesterNew extends Ex14 {
                 {542,544,534,536,510,512,502,504,414,416,406,408,382,384,374,376},
                 {548,546,540,538,516,514,508,506,420,418,412,410,388,386,380,378}
         };
-        if (needToFind && !search(arr, num)) {
-            err(num, true);
-        } else if (!needToFind && search(arr, num)) {
-            err(num, false);
+        boolean status = search(arr, num);
+        if (needToFind && !status) {
+            errf(num);
+        } else if (!needToFind && status) {
+            errt(num);
         } else {
             print(String.format("Returned OK for %s", num));
         }
     }
 
-    private static void err(int num, boolean find) {
-        if (!find) {
-            System.out.printf("ERROR - Didn't find number %s%n", num);
-        }
-        else {
-            System.out.printf("ERROR - Found number you shouldn't find %s%n", num);
-        }
+    private static void errt(int num) {
+        System.out.printf("ERROR - Found number you shouldn't find: %s%n", num);
+    }
+
+    private static void errf(int num) {
+        System.out.printf("ERROR - Didn't find number %s%n", num);
     }
 
     private static int Rect(int w, int h) {

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=RectNodeTester
+comment0.text=\r\n\ Maman\ 15\ Tester\ (\ RectNode\ )\r\n\ Amit\ Yanay\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=sen
+comment2.target=void\ p(java.lang.String)
+comment3.params=sen
+comment3.target=void\ pn(java.lang.String)
+comment4.params=
+comment4.target=void\ ok()
+comment5.params=expected\ actual
+comment5.target=void\ err(java.lang.Object,\ java.lang.Object)
+comment6.params=r
+comment6.target=java.lang.String\ pNode(RectNode)
+numComments=7

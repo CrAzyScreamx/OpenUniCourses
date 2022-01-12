@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=RectNode
+comment1.params=r
+comment1.target=RectNode(RectangleA)
+comment2.params=r\ n
+comment2.target=RectNode(RectangleA,\ RectNode)
+comment3.params=r
+comment3.target=RectNode(RectNode)
+comment4.params=
+comment4.target=RectangleA\ getRect()
+comment5.params=
+comment5.target=RectNode\ getNext()
+comment6.params=r
+comment6.target=void\ setRect(RectangleA)
+comment7.params=next
+comment7.target=void\ setNext(RectNode)
+numComments=8
